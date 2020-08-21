@@ -10,41 +10,25 @@ import {
     Button,
     Modal,
 } from 'react-native'
-import DateTimePicker from '@react-native-community/datetimepicker'
-
+import AddMeal from '../components/AddMeal'
 const MealsScreen = (props) => {
-    const [date, setDate] = useState(new Date())
     const [addLogVisibility, setAddLogVisibility] = useState(false)
+
+    const modalHandler = () => {
+        setAddLogVisibility(!addLogVisibility)
+    }
+
     return (
         <View style={styles.screen}>
             <Text> This is the Meals Screen</Text>
             <Button
                 title='Add Entry'
                 onPress={() => {
-                    setAddLogVisibility(true)
+                    modalHandler()
                 }}
             />
             <Modal animationType='slide' visible={addLogVisibility}>
-                <View style={styles.modalContainer}>
-                    <Text>Create a entry!</Text>
-                    <View style={styles.modalButtons}>
-                        <Button
-                            title='Add'
-                            onPress={() => {
-                                setAddLogVisibility(false)
-                            }}
-                        />
-                    </View>
-                    <View style={styles.modalButtons}>
-                        <Button
-                            title='Cancel'
-                            onPress={() => {
-                                setAddLogVisibility(false)
-                            }}
-                        />
-                    </View>
-                    <DateTimePicker value={date} />
-                </View>
+                <AddMeal modalHandler={modalHandler} />
             </Modal>
         </View>
     )
