@@ -21,12 +21,15 @@ const MealsScreen = (props) => {
     return (
         <View style={styles.screen}>
             <Text> This is the Meals Screen</Text>
-            <Button
-                title='Add Entry'
-                onPress={() => {
-                    modalHandler()
-                }}
-            />
+            <View style={styles.bottom}>
+                <Button
+                    style={styles.button}
+                    title='Add Entry'
+                    onPress={() => {
+                        modalHandler()
+                    }}
+                />
+            </View>
             <Modal animationType='slide' visible={addLogVisibility}>
                 <AddMeal modalHandler={modalHandler} />
             </Modal>
@@ -40,14 +43,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    modalContainer: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+    button: {
+        display: 'flex',
+        alignItems: 'flex-end',
     },
-    modalButtons: {
-        padding: 10,
+    bottom: {
+        width: '100%',
+        height: 50,
+        backgroundColor: '#FF9800',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        bottom: 0,
     },
 })
 export default MealsScreen
