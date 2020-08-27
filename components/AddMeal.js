@@ -55,20 +55,22 @@ const AddMeal = (props) => {
                 </View>
                 {showDatePicker && (
                     <DateTimePicker
-                        testID='dateTimePicker'
+                        testID='mealTime'
                         value={date}
                         mode={'date'}
                         is24Hour={true}
                         display='default'
-                        onChangeDate={onChangeDate}
+                        onChange={onChangeDate}
                     />
                 )}
                 <View style={styles.dateFormContainer}>
-                    <Text>{time.toLocaleTimeString('en-US')}</Text>
+                    <Text style={styles.dateTimeText}>
+                        {time.toLocaleTimeString('en-US')}
+                    </Text>
                     <Button
                         title='Time'
                         onPress={() => {
-                            setShowDatePicker(true)
+                            setShowTimerPicker(true)
                         }}
                     />
                 </View>
@@ -76,15 +78,23 @@ const AddMeal = (props) => {
                     <DateTimePicker
                         testID='dateTimePicker'
                         value={time}
-                        mode={'date'}
+                        mode={'time'}
                         is24Hour={true}
                         display='default'
                         onChange={onChangeTime}
                     />
                 )}
             </View>
-            <View style={styles.modalButtons}>
+            <View style={styles.modalButtonsContainer}>
                 <Button
+                    style={styles.modalButtons}
+                    title='Save'
+                    onPress={() => {
+                        props.modalHandler()
+                    }}
+                />
+                <Button
+                    style={styles.modalButtons}
                     title='Cancel'
                     onPress={() => {
                         props.modalHandler()
@@ -109,11 +119,25 @@ const styles = StyleSheet.create({
         width: '100%',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'flex-end',
+        justifyContent: 'flex-start',
         alignItems: 'center',
     },
+    modalButtonsContainer: {
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+
+        margin: 10,
+    },
+    modalButtons: {
+        padding: 10,
+        margin: 10,
+    },
     input: {
-        textAlign: 'right',
+        display: 'flex',
+        width: '20%',
     },
     dateTimeText: {
         textAlign: 'left',
