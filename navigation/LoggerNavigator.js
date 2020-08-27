@@ -15,7 +15,7 @@ export default function App() {
         <NavigationContainer>
             <Tab.Navigator>
                 <Tab.Screen
-                    name='Meals'
+                    name='meals'
                     component={MealsScreen}
                     options={{
                         tabBarLabel: 'Meals',
@@ -29,7 +29,7 @@ export default function App() {
                     }}
                 />
                 <Tab.Screen
-                    name='Sleep'
+                    name='sleep'
                     component={SleepScreen}
                     options={{
                         tabBarLabel: 'Sleep',
@@ -43,7 +43,7 @@ export default function App() {
                     }}
                 />
                 <Tab.Screen
-                    name='Work Out'
+                    name='workout'
                     component={WorkoutsScreen}
                     options={{
                         tabBarLabel: 'Exercise',
